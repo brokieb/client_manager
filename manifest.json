@@ -1,0 +1,21 @@
+{
+  "name": "Client Manager",
+  "short_name": "C Manager",
+  "description": "Aplikacja ułatwiająca pracę biurom nieruchomości.",
+  "icons": [
+    {
+      "src": "img/icon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/index.php",
+  "display": "standalone",
+  "theme_color": "#6e3c28",
+  "background_color": "#6e3c28"
+}

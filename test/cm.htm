@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://brokieb.pl/cm/index.php?site=client-list -->
+<html lang="pl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#FFD700">
+                        <title>C Manager - Lista klientów</title>
+                    <link rel="icon" type="image/png" sizes="32x32" href="https://brokieb.pl/cm/img/favicon-32x32.png">
+        <link rel="manifest" href="https://brokieb.pl/cm/manifest.json">
+        
+        <link href="./C Manager - Lista klientów_files/bootstrap-dark.css" rel="stylesheet">
+        <link href="./C Manager - Lista klientów_files/jquery-ui.css" rel="stylesheet">
+        <link href="./C Manager - Lista klientów_files/intlTelInput.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./C Manager - Lista klientów_files/main.css">
+        <link rel="stylesheet" type="text/css" href="./C Manager - Lista klientów_files/all.min.css">
+        <link rel="stylesheet" type="text/css" href="./C Manager - Lista klientów_files/bootstrap-select.min.css">
+        <link rel="stylesheet" href="./C Manager - Lista klientów_files/select2-bootstrap-5-theme.min.css">
+        <link rel="stylesheet" href="./C Manager - Lista klientów_files/select2.min.css">
+
+        <script src="./C Manager - Lista klientów_files/jquery-3.5.1.min.js.pobrane"></script>
+        <script src="./C Manager - Lista klientów_files/jquery.dataTables.min.js.pobrane"></script>
+        <script src="./C Manager - Lista klientów_files/bootstrap.bundle.min.js.pobrane" crossorigin="anonymous">
+        </script>
+        <script src="./C Manager - Lista klientów_files/maska-master.js.pobrane"></script>
+        <script src="./C Manager - Lista klientów_files/jquery-ui.js.pobrane"></script>
+        <script src="./C Manager - Lista klientów_files/jquery.ui.touch-punch.min.js.pobrane"></script>
+        <script src="./C Manager - Lista klientów_files/jquery.cookie.js.pobrane"></script>
+        <script src="./C Manager - Lista klientów_files/printThis.js.pobrane"></script>
+        <script src="./C Manager - Lista klientów_files/clipboard.min.js.pobrane"></script>
+        <script src="./C Manager - Lista klientów_files/select2.min.js.pobrane"></script>
+        <!-- Latest compiled and minified CSS -->
+
+        <!-- Latest compiled and minified JavaScript -->
+
+
+    </head>
+
+    <body id="body-pd" class="bg-dark" data-site-href="client-list" data-s="1">
+                <div class="modals-container">
+            <div class="modal fade" id="myModalx0" tabindex="-1" aria-labelledby="tytul" aria-hidden="true">
+    <form method="POST" class="modal-dialog modal-dialog-centered" action="https://brokieb.pl/cm/index.php?site=client-list">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="d-flex flex-column">
+
+                    <h5 class="modal-title" id="tytul">Ładowanie... </h5>
+                    <h6 class="modal-agent" id="tytul"></h6>
+                </div>
+                <span>
+                    <!-- <button type="button" class='btn btn-outline' aria-label="toggleWindow" ><i class="far fa-window-restore"></i></button> -->
+                    <button type="button" class="btn btn-outline" data-bs-dismiss="modal"><i class="fas fa-times"></i></button>
+                </span>
+            </div>
+            <div class="modal-body">
+                <div class="content" data-group="0">
+                    <div class="spinner-border text-light" role="status">
+                        <div class="d-flex justify-content-center">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+                <div class="btn-group content-actions" style="display:none">
+                    <button type="button" class="btn btn-danger dropdown-toggle " data-bs-toggle="dropdown" aria-expanded="false">
+                        Akcje
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" data-toggle="modal" data-modal-type="confirmation" data-modal="11" data-content="success" data-title="Potwierdź działanie" data-page="null" data-id="null" href="https://brokieb.pl/cm/index.php?site=client-list#">Zakończone pozytywnie, archiwizuj</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" data-toggle="modal" data-modal-type="confirmation" data-modal="11" data-content="loss" data-title="Potwierdź działanie" data-page="null" data-id="null" href="https://brokieb.pl/cm/index.php?site=client-list#">nie udało się, archiwizuj</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item" data-toggle="modal" data-modal-type="confirmation" data-modal="11" data-content="remove" data-title="Potwierdź działanie" data-page="null" data-id="null" href="https://brokieb.pl/cm/index.php?site=client-list#">Usuń bezpowrotnie</a>
+                        </li>
+                    </ul>
+                </div>
+                <button style="display:none" id="print" type="button" class="btn btn-success"><i class="fas fa-print px-2"></i>Drukuj</button>
+                <a style="display:none" id="call" href="https://brokieb.pl/cm/index.php?site=client-list" class="btn btn-info call-client"><i class="fas fa-phone px-2"></i>Zadzwoń do klienta</a>
+                <button style="display:none" id="send" type="submit" class="btn btn-success"><i class="fas fa-paper-plane px-2"></i>Wyślij</button>
+                <button style="display:none" id="save" type="submit" class="btn btn-success"><i class="fas fa-save px-2"></i>Zapisz</button>
+                <button style="display:none" id="prevent" type="button" class="btn btn-success" data-bs-dismiss="modal"><i class="fas fa-check px-2"></i>Akceptuj</button>
+                <div id="confirm" style="display:none;width:100%;">
+                    <div class="d-flex justify-content-around"> 
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fas pe-2 fa-times"></i>Nie</button>
+                        <button type="submit" class="btn btn-success"><i class="fas pe-2 fa-check"></i>Tak</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>        </div>
+        <div class="nav-content">
+    <div class="nav-backdrop d-none">
+    </div>
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div>
+                <a href="https://brokieb.pl/cm/index.php?site=client-list#" class="nav_logo"> <img src="./C Manager - Lista klientów_files/logo.png">
+                    <span class="nav_logo-name">Client Manager</span>
+                </a>
+                                <div class="nav_title">
+                                        Dziś nie masz żadnych spotkań
+                                    </div>
+                                <div class="nav_list">
+                    <a href="https://brokieb.pl/cm/index.php?site=client-list#" class="nav_link " data-toggle="modal" data-content="search-engine" data-modal="9" data-title="Wyszukiwarka">
+                                    <i class=" fas fa-search"></i>
+                                    <span class="nav_name">Wyszukiwarka</span>
+                                </a><a href="https://brokieb.pl/cm/index.php?site=add-client" class="nav_link ">
+                                    <i class=" fas fa-user-plus"></i>
+                                    <span class="nav_name">Dodaj klienta</span>
+                                </a><a href="https://brokieb.pl/cm/index.php?site=client-list" class="nav_link active">
+                                    <i class=" fas fa-users"></i>
+                                    <span class="nav_name">Lista klientów</span>
+                                </a><a href="https://brokieb.pl/cm/index.php?site=add-build" class="nav_link ">
+                                    <i class=" fas fa-clinic-medical"></i>
+                                    <span class="nav_name">Dodaj nieruchomość</span>
+                                </a><a href="https://brokieb.pl/cm/index.php?site=build-list" class="nav_link ">
+                                    <i class=" fas fa-home"></i>
+                                    <span class="nav_name">Lista nieruchomości</span>
+                                </a><a href="https://brokieb.pl/cm/index.php?site=add-meet" class="nav_link ">
+                                    <i class=" fas fa-calendar-plus"></i>
+                                    <span class="nav_name">Dodaj spotkanie</span>
+                                </a><a href="https://brokieb.pl/cm/index.php?site=meet-list" class="nav_link ">
+                                    <i class=" fas fa-calendar-alt"></i>
+                                    <span class="nav_name">Lista spotkań</span>
+                                </a><a href="https://brokieb.pl/cm/index.php?site=client-list#" class="nav_link " data-toggle="modal" data-content="back" data-modal="8" data-title="Wybierz pozycję do której chcesz wrócić">
+                                    <i class=" fas fa-backward"></i>
+                                    <span class="nav_name">Ostatnio przeglądane</span>
+                                </a>                                    </div>
+            </div>
+            <div style="display:flex;justify-content:space-between">
+                                <div>
+                    <a href="https://brokieb.pl/cm/index.php?site=client-list#" data-group="8" data-bs-toggle="dropdown" class="nav_link ">
+                        <i class=" fas fa-cog"></i>
+                        <span class="nav_name">root</span>
+                    </a>
+                    <ul class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+                                                <li><a class="dropdown-item" href="https://brokieb.pl/cm/index.php?site=profile/account-details"><i class="pe-2 fas fa-user-circle"></i>Szczegóły konta</a>
+                        </li>
+                                                <li><a class="dropdown-item" href="https://brokieb.pl/cm/index.php?site=profile/saved-session"><i class="pe-2 fas fa-history"></i>Zapisane sesje</a>
+                        </li>
+                                                <li><a class="dropdown-item" href="https://brokieb.pl/cm/index.php?site=profile/preferences"><i class="pe-2 fas fa-asterisk"></i>Preferencje</a>
+                        </li>
+                                                <li><a class="dropdown-item" href="https://brokieb.pl/cm/index.php?site=profile/group"><i class="pe-2 fas fa-users-cog"></i>grupy</a>
+                        </li>
+                                                <li><a class="dropdown-item" href="https://brokieb.pl/cm/index.php?site=profile/calendar-sync"><i class="pe-2 fas fa-calendar-check"></i>Synchronizowanie spotkań</a>
+                        </li>
+                                                <li><a class="dropdown-item" href="https://brokieb.pl/cm/index.php?site=profile/additional-settings"><i class="pe-2 fas fa-ellipsis-h"></i>Dodatkowe ustawienia</a>
+                        </li>
+                                                <li><a class="dropdown-item" href="https://brokieb.pl/cm/index.php?site=profile/admin"><i class="pe-2 fas fa-candy-cane"></i>Admin</a></li>
+                                                <li><a class="dropdown-item" href="https://brokieb.pl/cm/index.php?site=client-list#" data-chat=""><i class="pe-2 fas fa-comments"></i>Chat z administracją</a></li>
+                    </ul>
+                </div>
+                <span class="d-flex flex-row">
+                    <a href="https://brokieb.pl/cm/index.php?site=archive" class="nav_link">
+                        <i class="fas fa-archive"></i>
+                    </a>
+                    <a href="https://brokieb.pl/cm/index.php?site=destroy" class="nav_link">
+                        <i class="fas fa-power-off ?&gt;"></i>
+
+                    </a>
+                </span>
+
+
+
+                
+        </div></nav>
+    </div>
+
+
+
+
+
+
+    <header class="header d-grid py-2 w-100" id="header">
+        <div class="d-flex justify-content-between">
+
+
+            <span class="col-1"></span>
+            <h2 class="col-1 m-0 p-0 text-nowrap d-flex align-self-center justify-content-center" id="pageTitle">Lista klientów</h2>
+            <div class="col-1" id="header-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <!-- <a class='helper' href='#'><i class="ms-auto fa-2x far fa-question-circle"></i></a> -->
+        </div>
+    </header>
+</div>            <!--Container Main start-->
+            <div class="container-xxl container-fluid" style="min-height:90vh;">
+                <div class="row">
+                    
+
+
+
+
+                        
+
+                            <div class="row m-auto p-2">
+        <span class="col-12 col-sm-6 d-flex justify-content-center align-items-center">
+            <button class="btn btn-secondary m-2" data-bs-toggle="collapse" href="#adv-search" role="button" aria-expanded="false" aria-controls="adv-search"><i class="fas fa-search px-2"></i>Wyszukiwanie zaawansowane</button>
+        </span>
+            </div>
+    <div class="my-3 collapse" id="adv-search">
+    <div class="alert alert-primary" role="alert">
+        <h4 class="alert-heading">Zatrzymaj się na chwilę!</h4>
+        <p>W wyszukiwarce rozpoznawane są trzy typy danych: tekst, liczba, zaznaczenie. Przy polu do wpisania liczby (np. rok, ilość) możemy podać "<br>
+            1995 ,&gt; 2006 " - co będzie oznaczać że szukamy zapisanych mieszkań których dany parametr roku jest większy od '95 i mniejszy od '06.<br>
+            Przy zaznaczeniu któregoś z przycisków, zostaną wyszukane elementy w których zostały zaznaczone te pola.<br>
+            Pola do wpisania tekstu (np. ulica, nazwisko) rozpoznają kawałki tekstu, możesz wpisać "ak" - zostaną wtedy wyszukani klienci o nazwisku "nowak" i "woźniak"<br>
+            Proszę pamiętać że wyszukiwarka jest czuła na błędy i przy dodaniu jednego z argumentów błędnie, zostanie zwrócony pusty wynik</p>
+    </div>
+    <form method="POST">
+    <div class="row mx-2">
+  
+        <input type="hidden" name="00mode" value="adv-search">
+
+            <div class="col-lg-7 col-sm-12 py-1">
+                    
+                <div class="w-100">
+                    <div class="p-1">
+                        <h4 class="m-0">Dane kontaktowe</h4>
+                    </div>
+                                                    <div class="py-2 row">
+                                
+                                                                                                <div class="mb-1 col-6 form-floating">
+                                                        <input type="text" class="form-control mask" id="client_client-name" name="client_client-name" placeholder="" data-mask-raw-value="" data-mask-inited="true">
+                                                        <label for="client_client-name">Imię (<i></i> )</label>
+                                                    </div>
+                                                
+                                                                                                <div class="mb-1 col-6 form-floating">
+                                                        <input type="text" class="form-control mask" id="client_client-surname" name="client_client-surname" placeholder="" data-mask-raw-value="" data-mask-inited="true">
+                                                        <label for="client_client-surname">Nazwisko (<i></i> )</label>
+                                                    </div>
+                                                
+                                                                                                <div class="mb-1 col-6 form-floating">
+                                                        <input type="text" class="form-control mask" id="client_client-phone" name="client_client-phone" placeholder="" data-mask-raw-value="" data-mask-inited="true">
+                                                        <label for="client_client-phone">Numer telefonu (<i></i> )</label>
+                                                    </div>
+                                                
+                                                                                                <div class="mb-1 col-6 form-floating">
+                                                        <input type="text" class="form-control mask" id="client_client-email" name="client_client-email" placeholder="adres@wp.pl" data-mask-raw-value="" data-mask-inited="true">
+                                                        <label for="client_client-email">Email (<i>adres@wp.pl</i> )</label>
+                                                    </div>
+                                                
+                                            </div>
+                                                                                </div>
+                                    
+                <div class="w-100">
+                    <div class="p-1">
+                        <h4 class="m-0">Szczegóły</h4>
+                    </div>
+                                                    <div class="py-2 row">
+                                
+                                                                                                <div class="mb-1 col-12 form-floating">
+                                                        <input type="text" class="form-control mask" id="property_max-price" name="property_max-price" placeholder="&lt;500 000" data-mask-raw-value="" data-mask-inited="true">
+                                                        <label for="property_max-price">Do jakiej kwoty (<i>&lt;500 000</i> )</label>
+                                                    </div>
+                                                
+                                                                                                <div class="mb-1 col-12 form-floating">
+                                                        <input type="text" class="form-control mask" id="property_max-time" name="property_max-time" placeholder="&lt;01.10.2050" data-mask-raw-value="" data-mask-inited="true">
+                                                        <label for="property_max-time">Do kiedy (<i>&lt;01.10.2050</i> )</label>
+                                                    </div>
+                                                
+                                            </div>
+                                                                                </div>
+                                    
+                <div class="w-100">
+                    <div class="p-1">
+                        <h4 class="m-0">Zakresy</h4>
+                    </div>
+                                                    <div class="py-2 row">
+                                
+                                                                                                <div class="mb-1 col-6 form-floating">
+                                                        <input type="text" class="form-control mask" id="property_floor-from" name="property_floor-from" placeholder="&lt;2" data-mask-raw-value="" data-mask-inited="true">
+                                                        <label for="property_floor-from">Piętro od (<i>&lt;2</i> )</label>
+                                                    </div>
+                                                
+                                                                                                <div class="mb-1 col-6 form-floating">
+                                                        <input type="text" class="form-control mask" id="property_floor-to" name="property_floor-to" placeholder="&lt;3" data-mask-raw-value="" data-mask-inited="true">
+                                                        <label for="property_floor-to">Piętro do (<i>&lt;3</i> )</label>
+                                                    </div>
+                                                
+                                                                                                <div class="mb-1 col-6 form-floating">
+                                                        <input type="text" class="form-control mask" id="property_rooms-from" name="property_rooms-from" placeholder="&lt;5" data-mask-raw-value="" data-mask-inited="true">
+                                                        <label for="property_rooms-from">Pokoi od (<i>&lt;5</i> )</label>
+                                                    </div>
+                                                
+                                                                                                <div class="mb-1 col-6 form-floating">
+                                                        <input type="text" class="form-control mask" id="property_rooms-to" name="property_rooms-to" placeholder="&lt;7" data-mask-raw-value="" data-mask-inited="true">
+                                                        <label for="property_rooms-to">Pokoi do (<i>&lt;7</i> )</label>
+                                                    </div>
+                                                
+                                                                                                <div class="mb-1 col-6 form-floating">
+                                                        <input type="text" class="form-control mask" id="property_living-area-from" name="property_living-area-from" placeholder="&lt;200 m" data-mask-raw-value="" data-mask-inited="true">
+                                                        <label for="property_living-area-from">Metraż od (<i>&lt;200 m</i> )</label>
+                                                    </div>
+                                                
+                                                                                                <div class="mb-1 col-6 form-floating">
+                                                        <input type="text" class="form-control mask" id="property_living-area-to" name="property_living-area-to" placeholder="&lt;360 m" data-mask-raw-value="" data-mask-inited="true">
+                                                        <label for="property_living-area-to">Metraż do (<i>&lt;360 m</i> )</label>
+                                                    </div>
+                                                
+                                            </div>
+                                                                                </div>
+                                    
+                <div class="w-100">
+                    <div class="p-1">
+                        <h4 class="m-0">Uwagi</h4>
+                    </div>
+                                                                <div class="py-2 d-flex">
+                                            
+                                            
+                                                    <div class="mb-1 col-12 form-floating">
+                                                        <input type="text" class="form-control mask" id="client_comment" name="client_comment" placeholder="Miły klient, ma małe dziecko" data-mask-raw-value="" data-mask-inited="true">
+                                                        <label for="client_comment">Uwagi( Miły klient, ma małe dziecko )</label>
+                                                    </div>
+                                        
+                                            </div>
+                                                                                </div>
+                                    </div><div class="col-lg-5  col-sm-12 py-1">
+                    
+                <div class="w-100">
+                    <div class="p-1">
+                        <h4 class="m-0">Czego szuka</h4>
+                    </div>
+                                                        <div class="py-2 d-flex flex-wrap ">
+                                    
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_type-of-building[]" value="mieszkanie" id="mieszkanie" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="mieszkanie">Mieszkanie</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_type-of-building[]" value="dom" id="dom" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="dom">Dom</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_type-of-building[]" value="lokal-uzytkowy" id="lokal-uzytkowy" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="lokal-uzytkowy">Lokal użytkowy</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_type-of-building[]" value="dzialka" id="dzialka" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="dzialka">Działka</label>
+                                                    </div>
+                                                   
+                                                
+                                            </div>
+                                                                                </div>
+                                    
+                <div class="w-100">
+                    <div class="p-1">
+                        <h4 class="m-0">Cel</h4>
+                    </div>
+                                                        <div class="py-2 d-flex flex-wrap ">
+                                    
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_purpose[]" value="zamieszkanie" id="zamieszkanie" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="zamieszkanie">Zamieszkanie</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_purpose[]" value="wynajem" id="wynajem" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="wynajem">Wynajem</label>
+                                                    </div>
+                                                   
+                                                
+                                            </div>
+                                                                                </div>
+                                    
+                <div class="w-100">
+                    <div class="p-1">
+                        <h4 class="m-0">Stan</h4>
+                    </div>
+                                                        <div class="py-2 d-flex flex-wrap ">
+                                    
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_finish[]" value="do-zamieszkania" id="do-zamieszkania" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="do-zamieszkania">Do zamieszkania</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_finish[]" value="do-remontu" id="do-remontu" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="do-remontu">Do remontu</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_finish[]" value="do-odswiezenia" id="do-odswiezenia" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="do-odswiezenia">Do odświeżenia</label>
+                                                    </div>
+                                                   
+                                                
+                                            </div>
+                                                                                </div>
+                                    
+                <div class="w-100">
+                    <div class="p-1">
+                        <h4 class="m-0">Forma zakupu</h4>
+                    </div>
+                                                        <div class="py-2 d-flex flex-wrap ">
+                                    
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="client_client-payment[]" value="kredyt" id="kredyt" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="kredyt">Kredyt</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="client_client-payment[]" value="gotowka" id="gotowka" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="gotowka">Gotówka</label>
+                                                    </div>
+                                                   
+                                                
+                                            </div>
+                                                                                </div>
+                                    
+                <div class="w-100">
+                    <div class="p-1">
+                        <h4 class="m-0">Rodzaj kuchni</h4>
+                    </div>
+                                                        <div class="py-2 d-flex flex-wrap ">
+                                    
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_kitchen[]" value="kuchnia-otwarta" id="kuchnia-otwarta" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="kuchnia-otwarta">Kuchnia otwarta</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_kitchen[]" value="kuchnia-zamknieta" id="kuchnia-zamknieta" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="kuchnia-zamknieta">Kuchnia zamknięta</label>
+                                                    </div>
+                                                   
+                                                
+                                            </div>
+                                                                                </div>
+                                    
+                <div class="w-100">
+                    <div class="p-1">
+                        <h4 class="m-0">Lokalizacja</h4>
+                    </div>
+                                                        <div class="py-2 d-flex flex-wrap ">
+                                    
+                                                                                                        <div class="checkbox">
+                                                              <input class="btn-check" type="checkbox" name="property_region[]" value="Słoneczko | centrum | podgórze | kazimierz | zabłocie" id="Słoneczko | centrum | podgórze | kazimierz | zabłocie" autocomplete="off">
+                                                              <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="Słoneczko | centrum | podgórze | kazimierz | zabłocie">Słoneczko | centrum | podgórze | kazimierz | zabłocie</label>
+                                                            </div>
+                                                                                                             
+                                                
+                                            </div>
+                                                                                </div>
+                                    
+                <div class="w-100">
+                    <div class="p-1">
+                        <h4 class="m-0">Wymagania</h4>
+                    </div>
+                                                        <div class="py-2 d-flex flex-wrap ">
+                                    
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_additional[]" value="centrum" id="centrum" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="centrum">Centrum</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_additional[]" value="obrzeza-miasta" id="obrzeza-miasta" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="obrzeza-miasta">Obrzeża miasta</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_additional[]" value="przystanek" id="przystanek" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="przystanek">Przystanek</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_additional[]" value="osrodek" id="osrodek" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="osrodek">Ośrodek</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_additional[]" value="balkon" id="balkon" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="balkon">Balkon</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_additional[]" value="garaz" id="garaz" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="garaz">Garaż</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_additional[]" value="parking-dla-niepelnosprawnych" id="parking-dla-niepelnosprawnych" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="parking-dla-niepelnosprawnych">Parking dla niepełnosprawnych</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_additional[]" value="parking" id="parking" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="parking">Parking</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_additional[]" value="przedszkole" id="przedszkole" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="przedszkole">Przedszkole</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_additional[]" value="szkola" id="szkola" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="szkola">Szkoła</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_additional[]" value="umeblowanie" id="umeblowanie" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="umeblowanie">Umeblowanie</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_additional[]" value="nieumeblowanie" id="nieumeblowanie" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="nieumeblowanie">NIEumeblowanie</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_additional[]" value="las" id="las" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="las">Las</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_additional[]" value="park" id="park" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="park">Park</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_additional[]" value="slonecznie" id="slonecznie" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="slonecznie">Słonecznie</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_additional[]" value="sklep" id="sklep" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="sklep">Sklep</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_additional[]" value="droga-dojazdowa" id="droga-dojazdowa" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="droga-dojazdowa">Droga dojazdowa</label>
+                                                    </div>
+                                                   
+                                                
+                                             <div class="checkbox">
+                                                        <input class="btn-check" type="checkbox" name="property_additional[]" value="plac-zabaw" id="plac-zabaw" autocomplete="off">
+                                                        <label class="btn btn-sm btn-outline-secondary my-1 mx-1" for="plac-zabaw">Plac zabaw</label>
+                                                    </div>
+                                                   
+                                                
+                                            </div>
+                                                                                </div>
+                                                                        </div>
+                                    </div>
+                                    <div class="row d-flex justify-content-center my-3">
+
+                  <button type="submit" class="btn btn-primary w-75 p-3 "><i class="fas fa-search px-2"></i>WYSZUKAJ</button>
+</div>
+
+
+    </form>
+</div>
+    <table class="table table-bordered col-lg-9" data-columns="{&quot;columns&quot;:{&quot;Imi\u0119 i nazwisko&quot;:4,&quot;Telefon&quot;:3,&quot;Dodano&quot;:3,&quot;Przyciski&quot;:2},&quot;config&quot;:{&quot;site&quot;:&quot;client&quot;,&quot;preference-id&quot;:6}}">
+        <thead>
+
+            <tr>
+                                <th class="col-4">Imię i nazwisko</th>
+                                <th class="col-3">Telefon</th>
+                                <th class="col-3">Dodano</th>
+                                <th class="col-2">Przyciski</th>
+                            </tr>
+        </thead>
+        <tbody>
+
+            <tr data-id="42">
+    <td colspan="5" class="p-0">
+        <table class="w-100">
+            <tbody><tr class="d-flex flex-wrap align-items-center" data-id="42">
+                                <td class="p-2 col-12 col-lg-4" data-tbl-title="name">#42 Damian                    Wozniai</td>
+                <td class="p-2 col-12 col-lg-3" data-tbl-title="phone"><a href="tel:+48575654814">+48575654814<i class="ps-1 fas fa-phone"></i></a></td>
+                <td class="p-2 col-12 col-lg-3" data-tbl-title="when">2021-07-14 21:24:47</td>
+                <td class="p-2 col-12  order-3 order-lg-2  col-lg-2">
+                    <div class="p-2 d-flex justify-content-around" data-tbl-title="buttons">
+                        <button type="button" class="btn btn-sm btn-primary mx-2" data-id="42" data-toggle="modal" data-content="add-client" data-modal="1" data-title="Edycja klienta o ID #42" data-call="+48575654814" data-bs-tooltip="tooltip" data-bs-placement="top" data-moderate="TRUE" title="" data-bs-original-title="Edycja">
+                            <i class="fas fa-edit"></i><p>KLiknij tutaj!!!!!!</p>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-primary mx-2" data-toggle="modal" data-content="add-client" data-modal="2" data-id="42" data-title="Szczegóły klienta o ID #42" data-call="+48575654814" data-bs-tooltip="tooltip" data-bs-placement="top" title="" data-bs-original-title="Informacje">
+                            <i class="fas fa-info-circle"></i><span>Informacje</span>
+                        </button>
+                        <!-- <button type="button"
+                                class="btn btn-sm btn-primary mx-2"
+                                data-toggle="modal"
+                                data-modal='14'
+                                data-content="add-build"
+                                data-title="Szczegóły nieruchomości o ID #<br />
+<b>Notice</b>:  Undefined index: build_id in <b>/var/www/html/cm/view/client-list.php</b> on line <b>54</b><br />
+"
+                                data-id="<br />
+<b>Notice</b>:  Undefined index: build_id in <b>/var/www/html/cm/view/client-list.php</b> on line <b>55</b><br />
+"
+                                data-call="<br />
+<b>Notice</b>:  Undefined index: build_client-phone in <b>/var/www/html/cm/view/client-list.php</b> on line <b>56</b><br />
+"
+                                data-bs-tooltip="tooltip"
+                                data-bs-placement="top"
+                                title="Informacje">
+                            <i class="fas fa-info-circle"></i><span>TEST</span>
+                        </button> -->
+                    </div>
+                </td>
+                                <td class="col-12 order-2 order-lg-3 col-lg-12">
+
+                    <div class="d-grid w-100 ">
+    <div class="row w-100 justify-content-around m-1">
+
+
+        
+        <div class="m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary py-2">
+                <strong class="me-auto text-white string-title fs-6">Wymagania</strong>
+            </div>
+            <div class="toast-body text-dark py-2 px-4 string-value fs-6">
+                obrzeża miasta, parking dla niepełnosprawnych, parking, park, słonecznie</div>
+        </div>
+            </div>
+</div>                </td>
+
+        </tr></tbody></table>
+    </td>
+</tr><tr data-id="37">
+    <td colspan="5" class="p-0">
+        <table class="w-100">
+            <tbody><tr class="d-flex flex-wrap align-items-center" data-id="37">
+                                <td class="p-2 col-12 col-lg-4" data-tbl-title="name">#37                     </td>
+                <td class="p-2 col-12 col-lg-3" data-tbl-title="phone"><a href="tel:"><i class="ps-1 fas fa-phone"></i></a></td>
+                <td class="p-2 col-12 col-lg-3" data-tbl-title="when">2021-07-14 10:58:12</td>
+                <td class="p-2 col-12  order-3 order-lg-2  col-lg-2">
+                    <div class="p-2 d-flex justify-content-around" data-tbl-title="buttons">
+                        <button type="button" class="btn btn-sm btn-primary mx-2" data-id="37" data-toggle="modal" data-content="add-client" data-modal="1" data-title="Edycja klienta o ID #37" data-call="" data-bs-tooltip="tooltip" data-bs-placement="top" data-moderate="TRUE" title="" data-bs-original-title="Edycja">
+                            <i class="fas fa-edit"></i><span>Edytuj</span>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-primary mx-2" data-toggle="modal" data-content="add-client" data-modal="2" data-id="37" data-title="Szczegóły klienta o ID #37" data-call="" data-bs-tooltip="tooltip" data-bs-placement="top" title="" data-bs-original-title="Informacje">
+                            <i class="fas fa-info-circle"></i><span>Informacje</span>
+                        </button>
+                        <!-- <button type="button"
+                                class="btn btn-sm btn-primary mx-2"
+                                data-toggle="modal"
+                                data-modal='14'
+                                data-content="add-build"
+                                data-title="Szczegóły nieruchomości o ID #<br />
+<b>Notice</b>:  Undefined index: build_id in <b>/var/www/html/cm/view/client-list.php</b> on line <b>54</b><br />
+"
+                                data-id="<br />
+<b>Notice</b>:  Undefined index: build_id in <b>/var/www/html/cm/view/client-list.php</b> on line <b>55</b><br />
+"
+                                data-call="<br />
+<b>Notice</b>:  Undefined index: build_client-phone in <b>/var/www/html/cm/view/client-list.php</b> on line <b>56</b><br />
+"
+                                data-bs-tooltip="tooltip"
+                                data-bs-placement="top"
+                                title="Informacje">
+                            <i class="fas fa-info-circle"></i><span>TEST</span>
+                        </button> -->
+                    </div>
+                </td>
+                                <td class="col-12 order-2 order-lg-3 col-lg-12">
+
+                    <div class="d-grid w-100 ">
+    <div class="row w-100 justify-content-around m-1">
+
+
+            </div>
+</div>                </td>
+
+        </tr></tbody></table>
+    </td>
+</tr><tr data-id="12">
+    <td colspan="5" class="p-0">
+        <table class="w-100">
+            <tbody><tr class="d-flex flex-wrap align-items-center" data-id="12">
+                                <td class="p-2 col-12 col-lg-4" data-tbl-title="name">#12 Damian                    Woźniak</td>
+                <td class="p-2 col-12 col-lg-3" data-tbl-title="phone"><a href="tel:345 634 543">345 634 543<i class="ps-1 fas fa-phone"></i></a></td>
+                <td class="p-2 col-12 col-lg-3" data-tbl-title="when">2021-06-17 19:54:00</td>
+                <td class="p-2 col-12  order-3 order-lg-2  col-lg-2">
+                    <div class="p-2 d-flex justify-content-around" data-tbl-title="buttons">
+                        <button type="button" class="btn btn-sm btn-primary mx-2" data-id="12" data-toggle="modal" data-content="add-client" data-modal="1" data-title="Edycja klienta o ID #12" data-call="345 634 543" data-bs-tooltip="tooltip" data-bs-placement="top" data-moderate="TRUE" title="" data-bs-original-title="Edycja">
+                            <i class="fas fa-edit"></i><span>Edytuj</span>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-primary mx-2" data-toggle="modal" data-content="add-client" data-modal="2" data-id="12" data-title="Szczegóły klienta o ID #12" data-call="345 634 543" data-bs-tooltip="tooltip" data-bs-placement="top" title="" data-bs-original-title="Informacje">
+                            <i class="fas fa-info-circle"></i><span>Informacje</span>
+                        </button>
+                        <!-- <button type="button"
+                                class="btn btn-sm btn-primary mx-2"
+                                data-toggle="modal"
+                                data-modal='14'
+                                data-content="add-build"
+                                data-title="Szczegóły nieruchomości o ID #<br />
+<b>Notice</b>:  Undefined index: build_id in <b>/var/www/html/cm/view/client-list.php</b> on line <b>54</b><br />
+"
+                                data-id="<br />
+<b>Notice</b>:  Undefined index: build_id in <b>/var/www/html/cm/view/client-list.php</b> on line <b>55</b><br />
+"
+                                data-call="<br />
+<b>Notice</b>:  Undefined index: build_client-phone in <b>/var/www/html/cm/view/client-list.php</b> on line <b>56</b><br />
+"
+                                data-bs-tooltip="tooltip"
+                                data-bs-placement="top"
+                                title="Informacje">
+                            <i class="fas fa-info-circle"></i><span>TEST</span>
+                        </button> -->
+                    </div>
+                </td>
+                                <td class="col-12 order-2 order-lg-3 col-lg-12">
+
+                    <div class="d-grid w-100 ">
+    <div class="row w-100 justify-content-around m-1">
+
+
+        
+        <div class="m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary py-2">
+                <strong class="me-auto text-white string-title fs-6">Wymagania</strong>
+            </div>
+            <div class="toast-body text-dark py-2 px-4 string-value fs-6">
+                centrum, parking, przedszkole, las, park, sklep</div>
+        </div>
+        
+
+
+
+
+        <div class=" m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary">
+                <strong class="me-auto text-white string-title fs-6">Piętro</strong>
+            </div>
+                        <div class="toast-body text-dark py-2 px-4 string-value fs-6">od 3 do 5</div>
+            
+
+        </div>
+
+        
+
+
+
+
+        
+
+        
+
+
+
+
+        <div class=" m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary">
+                <strong class="me-auto text-white string-title fs-6">Pokoi</strong>
+            </div>
+                        <div class="toast-body text-dark py-2 px-4 string-value fs-6">od 6 do 8</div>
+            
+
+        </div>
+
+        
+
+
+
+
+        
+
+        
+
+
+
+
+        <div class=" m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary">
+                <strong class="me-auto text-white string-title fs-6">Metraż</strong>
+            </div>
+                        <div class="toast-body text-dark py-2 px-4 string-value fs-6">od 300.00 m<sup>2</sup>             do 500.00 m2            </div>
+            
+
+        </div>
+
+        
+
+
+
+
+        
+
+        
+
+
+
+
+        <div class=" m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary">
+                <strong class="me-auto text-white string-title fs-6">Uwagi</strong>
+            </div>
+                        <div class="toast-body text-dark py-2 px-4 string-value fs-6">Inna uwaga, </div>
+            
+
+        </div>
+
+            </div>
+</div>                </td>
+
+        </tr></tbody></table>
+    </td>
+</tr><tr data-id="8">
+    <td colspan="5" class="p-0">
+        <table class="w-100">
+            <tbody><tr class="d-flex flex-wrap align-items-center" data-id="8">
+                                <td class="p-2 col-12 col-lg-4" data-tbl-title="name">#8 Juliusz                    Słowacki</td>
+                <td class="p-2 col-12 col-lg-3" data-tbl-title="phone"><a href="tel:565 860 211">565 860 211<i class="ps-1 fas fa-phone"></i></a></td>
+                <td class="p-2 col-12 col-lg-3" data-tbl-title="when">2021-06-14 22:11:19</td>
+                <td class="p-2 col-12  order-3 order-lg-2  col-lg-2">
+                    <div class="p-2 d-flex justify-content-around" data-tbl-title="buttons">
+                        <button type="button" class="btn btn-sm btn-primary mx-2" data-id="8" data-toggle="modal" data-content="add-client" data-modal="1" data-title="Edycja klienta o ID #8" data-call="565 860 211" data-bs-tooltip="tooltip" data-bs-placement="top" data-moderate="TRUE" title="" data-bs-original-title="Edycja">
+                            <i class="fas fa-edit"></i><span>Edytuj</span>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-primary mx-2" data-toggle="modal" data-content="add-client" data-modal="2" data-id="8" data-title="Szczegóły klienta o ID #8" data-call="565 860 211" data-bs-tooltip="tooltip" data-bs-placement="top" title="" data-bs-original-title="Informacje">
+                            <i class="fas fa-info-circle"></i><span>Informacje</span>
+                        </button>
+                        <!-- <button type="button"
+                                class="btn btn-sm btn-primary mx-2"
+                                data-toggle="modal"
+                                data-modal='14'
+                                data-content="add-build"
+                                data-title="Szczegóły nieruchomości o ID #<br />
+<b>Notice</b>:  Undefined index: build_id in <b>/var/www/html/cm/view/client-list.php</b> on line <b>54</b><br />
+"
+                                data-id="<br />
+<b>Notice</b>:  Undefined index: build_id in <b>/var/www/html/cm/view/client-list.php</b> on line <b>55</b><br />
+"
+                                data-call="<br />
+<b>Notice</b>:  Undefined index: build_client-phone in <b>/var/www/html/cm/view/client-list.php</b> on line <b>56</b><br />
+"
+                                data-bs-tooltip="tooltip"
+                                data-bs-placement="top"
+                                title="Informacje">
+                            <i class="fas fa-info-circle"></i><span>TEST</span>
+                        </button> -->
+                    </div>
+                </td>
+                                <td class="col-12 order-2 order-lg-3 col-lg-12">
+
+                    <div class="d-grid w-100 ">
+    <div class="row w-100 justify-content-around m-1">
+
+
+        
+        <div class="m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary py-2">
+                <strong class="me-auto text-white string-title fs-6">Wymagania</strong>
+            </div>
+            <div class="toast-body text-dark py-2 px-4 string-value fs-6">
+                centrum, przystanek, parking, przedszkole, park</div>
+        </div>
+        
+
+
+
+
+        <div class=" m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary">
+                <strong class="me-auto text-white string-title fs-6">Piętro</strong>
+            </div>
+                        <div class="toast-body text-dark py-2 px-4 string-value fs-6">od 2 do 5</div>
+            
+
+        </div>
+
+        
+
+
+
+
+        
+
+        
+
+
+
+
+        <div class=" m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary">
+                <strong class="me-auto text-white string-title fs-6">Pokoi</strong>
+            </div>
+                        <div class="toast-body text-dark py-2 px-4 string-value fs-6">od 4 do 9</div>
+            
+
+        </div>
+
+        
+
+
+
+
+        
+
+        
+
+
+
+
+        <div class=" m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary">
+                <strong class="me-auto text-white string-title fs-6">Metraż</strong>
+            </div>
+                        <div class="toast-body text-dark py-2 px-4 string-value fs-6">od 200.00 m<sup>2</sup>             do 250.00 m2            </div>
+            
+
+        </div>
+
+        
+
+
+
+
+        
+
+        
+
+
+
+
+        <div class=" m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary">
+                <strong class="me-auto text-white string-title fs-6">Uwagi</strong>
+            </div>
+                        <div class="toast-body text-dark py-2 px-4 string-value fs-6">Coś tam, jakaś informacja</div>
+            
+
+        </div>
+
+            </div>
+</div>                </td>
+
+        </tr></tbody></table>
+    </td>
+</tr><tr data-id="7">
+    <td colspan="5" class="p-0">
+        <table class="w-100">
+            <tbody><tr class="d-flex flex-wrap align-items-center" data-id="7">
+                                <td class="p-2 col-12 col-lg-4" data-tbl-title="name">#7                     </td>
+                <td class="p-2 col-12 col-lg-3" data-tbl-title="phone"><a href="tel:"><i class="ps-1 fas fa-phone"></i></a></td>
+                <td class="p-2 col-12 col-lg-3" data-tbl-title="when">2021-06-12 18:40:44</td>
+                <td class="p-2 col-12  order-3 order-lg-2  col-lg-2">
+                    <div class="p-2 d-flex justify-content-around" data-tbl-title="buttons">
+                        <button type="button" class="btn btn-sm btn-primary mx-2" data-id="7" data-toggle="modal" data-content="add-client" data-modal="1" data-title="Edycja klienta o ID #7" data-call="" data-bs-tooltip="tooltip" data-bs-placement="top" data-moderate="TRUE" title="" data-bs-original-title="Edycja">
+                            <i class="fas fa-edit"></i><span>Edytuj</span>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-primary mx-2" data-toggle="modal" data-content="add-client" data-modal="2" data-id="7" data-title="Szczegóły klienta o ID #7" data-call="" data-bs-tooltip="tooltip" data-bs-placement="top" title="" data-bs-original-title="Informacje">
+                            <i class="fas fa-info-circle"></i><span>Informacje</span>
+                        </button>
+                        <!-- <button type="button"
+                                class="btn btn-sm btn-primary mx-2"
+                                data-toggle="modal"
+                                data-modal='14'
+                                data-content="add-build"
+                                data-title="Szczegóły nieruchomości o ID #<br />
+<b>Notice</b>:  Undefined index: build_id in <b>/var/www/html/cm/view/client-list.php</b> on line <b>54</b><br />
+"
+                                data-id="<br />
+<b>Notice</b>:  Undefined index: build_id in <b>/var/www/html/cm/view/client-list.php</b> on line <b>55</b><br />
+"
+                                data-call="<br />
+<b>Notice</b>:  Undefined index: build_client-phone in <b>/var/www/html/cm/view/client-list.php</b> on line <b>56</b><br />
+"
+                                data-bs-tooltip="tooltip"
+                                data-bs-placement="top"
+                                title="Informacje">
+                            <i class="fas fa-info-circle"></i><span>TEST</span>
+                        </button> -->
+                    </div>
+                </td>
+                                <td class="col-12 order-2 order-lg-3 col-lg-12">
+
+                    <div class="d-grid w-100 ">
+    <div class="row w-100 justify-content-around m-1">
+
+
+        
+
+
+
+
+        <div class=" m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary">
+                <strong class="me-auto text-white string-title fs-6">Piętro</strong>
+            </div>
+                        <div class="toast-body text-dark py-2 px-4 string-value fs-6">od 7 do 5</div>
+            
+
+        </div>
+
+        
+
+
+
+
+        
+
+        
+
+
+
+
+        <div class=" m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary">
+                <strong class="me-auto text-white string-title fs-6">Pokoi</strong>
+            </div>
+                        <div class="toast-body text-dark py-2 px-4 string-value fs-6">od 0 do 0</div>
+            
+
+        </div>
+
+        
+
+
+
+
+        
+
+        
+
+
+
+
+        <div class=" m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary">
+                <strong class="me-auto text-white string-title fs-6">Metraż</strong>
+            </div>
+                        <div class="toast-body text-dark py-2 px-4 string-value fs-6">od 0.00 m<sup>2</sup>             do 0.00 m2            </div>
+            
+
+        </div>
+
+        
+
+
+
+
+        
+
+            </div>
+</div>                </td>
+
+        </tr></tbody></table>
+    </td>
+</tr><tr data-id="6">
+    <td colspan="5" class="p-0">
+        <table class="w-100">
+            <tbody><tr class="d-flex flex-wrap align-items-center" data-id="6">
+                                <td class="p-2 col-12 col-lg-4" data-tbl-title="name">#6                     </td>
+                <td class="p-2 col-12 col-lg-3" data-tbl-title="phone"><a href="tel:"><i class="ps-1 fas fa-phone"></i></a></td>
+                <td class="p-2 col-12 col-lg-3" data-tbl-title="when">2021-06-12 17:27:32</td>
+                <td class="p-2 col-12  order-3 order-lg-2  col-lg-2">
+                    <div class="p-2 d-flex justify-content-around" data-tbl-title="buttons">
+                        <button type="button" class="btn btn-sm btn-primary mx-2" data-id="6" data-toggle="modal" data-content="add-client" data-modal="1" data-title="Edycja klienta o ID #6" data-call="" data-bs-tooltip="tooltip" data-bs-placement="top" data-moderate="TRUE" title="" data-bs-original-title="Edycja">
+                            <i class="fas fa-edit"></i><span>Edytuj</span>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-primary mx-2" data-toggle="modal" data-content="add-client" data-modal="2" data-id="6" data-title="Szczegóły klienta o ID #6" data-call="" data-bs-tooltip="tooltip" data-bs-placement="top" title="" data-bs-original-title="Informacje">
+                            <i class="fas fa-info-circle"></i><span>Informacje</span>
+                        </button>
+                        <!-- <button type="button"
+                                class="btn btn-sm btn-primary mx-2"
+                                data-toggle="modal"
+                                data-modal='14'
+                                data-content="add-build"
+                                data-title="Szczegóły nieruchomości o ID #<br />
+<b>Notice</b>:  Undefined index: build_id in <b>/var/www/html/cm/view/client-list.php</b> on line <b>54</b><br />
+"
+                                data-id="<br />
+<b>Notice</b>:  Undefined index: build_id in <b>/var/www/html/cm/view/client-list.php</b> on line <b>55</b><br />
+"
+                                data-call="<br />
+<b>Notice</b>:  Undefined index: build_client-phone in <b>/var/www/html/cm/view/client-list.php</b> on line <b>56</b><br />
+"
+                                data-bs-tooltip="tooltip"
+                                data-bs-placement="top"
+                                title="Informacje">
+                            <i class="fas fa-info-circle"></i><span>TEST</span>
+                        </button> -->
+                    </div>
+                </td>
+                                <td class="col-12 order-2 order-lg-3 col-lg-12">
+
+                    <div class="d-grid w-100 ">
+    <div class="row w-100 justify-content-around m-1">
+
+
+        
+
+
+
+
+        <div class=" m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary">
+                <strong class="me-auto text-white string-title fs-6">Piętro</strong>
+            </div>
+                        <div class="toast-body text-dark py-2 px-4 string-value fs-6">od 8 do 7</div>
+            
+
+        </div>
+
+        
+
+
+
+
+        
+
+        
+
+
+
+
+        <div class=" m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary">
+                <strong class="me-auto text-white string-title fs-6">Pokoi</strong>
+            </div>
+                        <div class="toast-body text-dark py-2 px-4 string-value fs-6">od 0 do 0</div>
+            
+
+        </div>
+
+        
+
+
+
+
+        
+
+        
+
+
+
+
+        <div class=" m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary">
+                <strong class="me-auto text-white string-title fs-6">Metraż</strong>
+            </div>
+                        <div class="toast-body text-dark py-2 px-4 string-value fs-6">od 0.00 m<sup>2</sup>             do 0.00 m2            </div>
+            
+
+        </div>
+
+        
+
+
+
+
+        
+
+            </div>
+</div>                </td>
+
+        </tr></tbody></table>
+    </td>
+</tr><tr data-id="5">
+    <td colspan="5" class="p-0">
+        <table class="w-100">
+            <tbody><tr class="d-flex flex-wrap align-items-center" data-id="5">
+                                <td class="p-2 col-12 col-lg-4" data-tbl-title="name">#5 Damian                    wozniak</td>
+                <td class="p-2 col-12 col-lg-3" data-tbl-title="phone"><a href="tel:432 432 423">432 432 423<i class="ps-1 fas fa-phone"></i></a></td>
+                <td class="p-2 col-12 col-lg-3" data-tbl-title="when">2021-06-12 13:45:53</td>
+                <td class="p-2 col-12  order-3 order-lg-2  col-lg-2">
+                    <div class="p-2 d-flex justify-content-around" data-tbl-title="buttons">
+                        <button type="button" class="btn btn-sm btn-primary mx-2" data-id="5" data-toggle="modal" data-content="add-client" data-modal="1" data-title="Edycja klienta o ID #5" data-call="432 432 423" data-bs-tooltip="tooltip" data-bs-placement="top" data-moderate="TRUE" title="" data-bs-original-title="Edycja">
+                            <i class="fas fa-edit"></i><span>Edytuj</span>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-primary mx-2" data-toggle="modal" data-content="add-client" data-modal="2" data-id="5" data-title="Szczegóły klienta o ID #5" data-call="432 432 423" data-bs-tooltip="tooltip" data-bs-placement="top" title="" data-bs-original-title="Informacje">
+                            <i class="fas fa-info-circle"></i><span>Informacje</span>
+                        </button>
+                        <!-- <button type="button"
+                                class="btn btn-sm btn-primary mx-2"
+                                data-toggle="modal"
+                                data-modal='14'
+                                data-content="add-build"
+                                data-title="Szczegóły nieruchomości o ID #<br />
+<b>Notice</b>:  Undefined index: build_id in <b>/var/www/html/cm/view/client-list.php</b> on line <b>54</b><br />
+"
+                                data-id="<br />
+<b>Notice</b>:  Undefined index: build_id in <b>/var/www/html/cm/view/client-list.php</b> on line <b>55</b><br />
+"
+                                data-call="<br />
+<b>Notice</b>:  Undefined index: build_client-phone in <b>/var/www/html/cm/view/client-list.php</b> on line <b>56</b><br />
+"
+                                data-bs-tooltip="tooltip"
+                                data-bs-placement="top"
+                                title="Informacje">
+                            <i class="fas fa-info-circle"></i><span>TEST</span>
+                        </button> -->
+                    </div>
+                </td>
+                                <td class="col-12 order-2 order-lg-3 col-lg-12">
+
+                    <div class="d-grid w-100 ">
+    <div class="row w-100 justify-content-around m-1">
+
+
+        
+        <div class="m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary py-2">
+                <strong class="me-auto text-white string-title fs-6">Wymagania</strong>
+            </div>
+            <div class="toast-body text-dark py-2 px-4 string-value fs-6">
+                parking, las, park</div>
+        </div>
+        
+
+
+
+
+        <div class=" m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary">
+                <strong class="me-auto text-white string-title fs-6">Piętro</strong>
+            </div>
+                        <div class="toast-body text-dark py-2 px-4 string-value fs-6">od 2 do 3</div>
+            
+
+        </div>
+
+        
+
+
+
+
+        
+
+        
+
+
+
+
+        <div class=" m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary">
+                <strong class="me-auto text-white string-title fs-6">Pokoi</strong>
+            </div>
+                        <div class="toast-body text-dark py-2 px-4 string-value fs-6">od 4 do 5</div>
+            
+
+        </div>
+
+        
+
+
+
+
+        
+
+        
+
+
+
+
+        <div class=" m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary">
+                <strong class="me-auto text-white string-title fs-6">Metraż</strong>
+            </div>
+                        <div class="toast-body text-dark py-2 px-4 string-value fs-6">od 299.00 m<sup>2</sup>             do 360.00 m2            </div>
+            
+
+        </div>
+
+        
+
+
+
+
+        
+
+        
+
+
+
+
+        <div class=" m-3 p-0 bg-secondary col-11 col-sm-5 col-lg-3 string-parent" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-primary">
+                <strong class="me-auto text-white string-title fs-6">Uwagi</strong>
+            </div>
+                        <div class="toast-body text-dark py-2 px-4 string-value fs-6">Lubelska</div>
+            
+
+        </div>
+
+            </div>
+</div>                </td>
+
+        </tr></tbody></table>
+    </td>
+</tr>
+
+        </tbody>
+        
+    </table>
+    
+                                        </div>
+            </div>
+            <!--Container Main end-->
+
+
+            <div class="position-fixed col-xl-3 col-sm-6 alerts" style="bottom:120px;right:10px">
+                            </div>
+        
+            <script>
+                // Here is an example showing how you could do it using PHP
+                $("a[data-chat]").click(function(){
+                    console.log("chat!!")
+                var Tawk_API = Tawk_API || {};
+                Tawk_API.visitor = {
+                    name: 'root',
+                    email: 'brokieb@gmail.com',
+                    hash: '0ecfcc13c20e5eea9c33be6a2b96c528aa363b7a1bbd3f7bd6fa6a7eb164861b'
+                };
+                Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+                (function() {
+                    var s1 = document.createElement("script"),
+                        s0 = document.getElementsByTagName("script")[0];
+                    s1.async = true;
+                    s1.src = 'https://embed.tawk.to/60cc39fe65b7290ac63695bc/1f8es52fr';
+                    s1.charset = 'UTF-8';
+                    s1.setAttribute('crossorigin', '*');
+                    s0.parentNode.insertBefore(s1, s0);
+                })();
+                // Tawk_API.showWidget();
+            })
+            </script>
+                <script src="./C Manager - Lista klientów_files/intlTelInput.js.pobrane"></script>
+        <script src="./C Manager - Lista klientów_files/nav.js.pobrane"></script>
+        <script src="./C Manager - Lista klientów_files/main.js.pobrane"></script>
+        <script src="./C Manager - Lista klientów_files/ajax.js.pobrane"></script>
+
+        <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+
+        <footer class="position-aboslute end-0 pt-5 mt-5">
+            Client Manager 2021 | 2.99 BETA | <a href="https://brokieb.pl/cm/index.php?site=changelog">Historia zmian</a> | <a href="https://brokieb.pl/cm/index.php?site=privacy">Polityka prywatności</a>
+        </footer>
+    
+
+    
+</body></html>

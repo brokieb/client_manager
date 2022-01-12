@@ -1,0 +1,2 @@
+<input type='text' id='new-checkbox-input' class='form-control w-50 mb-2 mx-auto' placeholder='nowe pole' autocomplete="off">
+                <i>Dodane tutaj pole zostanie dodane jednorazowo, tylko do tego formularza. Pamiętaj że klikając w utworzone nowe pole, jeżeli zmienisz zdanie możesz je odznaczyć </i>

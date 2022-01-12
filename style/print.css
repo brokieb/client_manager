@@ -1,0 +1,10 @@
+@media print {
+    /* All your print styles go here */
+    
+*{
+    color:black;
+}
+.print-preview{
+    display:none;
+}
+}
